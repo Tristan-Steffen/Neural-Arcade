@@ -4,9 +4,12 @@
 # Ignore build directories
 **/build
 
+# Ignore virtual environments
+**/backend/venv
+
+
 # Ignore coverage directories
 **/coverage
-
 # Miscellaneous
 .DS_Store
 .env.local
