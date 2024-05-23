@@ -1,4 +1,4 @@
-/* src/TicTacToe.css */
+/* src/styles/TicTacToe.css */
 .board-row {
     display: flex;
 }
@@ -6,18 +6,41 @@
 .square {
     width: 60px;
     height: 60px;
-    background: #fff;
-    border: 1px solid #999;
+    background: #333; /* Dunkler Hintergrund für die Quadrate */
+    border: 1px solid #555;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
+    color: #00ffcc; /* Neonfarbe für den Text */
+    text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc; /* Glüheffekt */
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.square:hover {
+    background-color: #555;
+    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; /* Neon-Glüheffekt bei Hover */
 }
 
 .status {
     margin-bottom: 10px;
+    color: #ff00ff; /* Neonfarbe */
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff; /* Glüheffekt */
 }
 
 button {
     margin-top: 10px;
+    background-color: #1a1a1a; /* Dunkler Hintergrund für die Schaltfläche */
+    color: #00ffcc; /* Neonfarbe */
+    border: 1px solid #333;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-family: 'Orbitron', sans-serif; /* Futuristische Schriftart */
+}
+
+button:hover {
+    background-color: #333;
+    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; /* Neon-Glüheffekt bei Hover */
 }

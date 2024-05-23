@@ -2,23 +2,12 @@
 .App {
   display: flex;
   height: 100vh; /* Make the App container take full viewport height */
-}
-
-.menu {
-  width: 200px;
-  background-color: #f4f4f4;
-  padding: 15px;
-  height: 100%;
-  border-right: 1px solid #ccc;
-  box-sizing: border-box;
-  position: fixed; /* Fix the position of the menu */
-  left: 0; /* Align it to the left */
-  top: 0; /* Align it to the top */
+  background-color: #0d0d0d; /* Dunkler Hintergrund */
+  color: #00ffcc; /* Neonfarbe für den Text */
+  font-family: 'Orbitron', sans-serif; /* Futuristische Schriftart */
 }
 
 .content {
-  margin-left: 200px; /* Create space for the menu */
   padding: 20px;
-  flex: 1; /* Take up remaining space */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }

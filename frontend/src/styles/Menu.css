@@ -1,14 +1,18 @@
-/* src/components/Menu.css */
+/* src/styles/Menu.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap'); /* Futuristische Schriftart */
+
 .menu {
     width: 200px;
-    background-color: #f4f4f4;
-    padding: 0 15px;
-    height: 100%;
-    border-right: 1px solid #ccc;
+    background-color: #1a1a1a; /* Sehr dunkler Hintergrund */
+    padding: 15px;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .menu h2 {
     text-align: center;
+    color: #ff00ff; /* Neonfarbe */
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff; /* Glüheffekt */
 }
 
 .menu ul {
@@ -22,14 +26,16 @@
 
 .menu ul li a {
     text-decoration: none;
-    color: #333;
+    color: #00ffcc; /* Neonfarbe */
     display: block;
     padding: 10px;
-    background-color: #fff;
+    background-color: #333;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc; /* Glüheffekt */
 }
 
 .menu ul li a:hover {
-    background-color: #ddd;
+    background-color: #555;
+    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; /* Neon-Glüheffekt bei Hover */
 }
