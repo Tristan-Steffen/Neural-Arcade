@@ -1,7 +1,7 @@
 // src/TicTacToe.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './TicTacToe.css';
+import '../styles/TicTacToe.css';
 
 const TicTacToe = () => {
     const [board, setBoard] = useState(Array(9).fill(null));
