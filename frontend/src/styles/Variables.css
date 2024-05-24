@@ -1,0 +1,10 @@
+/* src/styles/variables.css */
+:root {
+    --background-color: #0d0d0d;
+    --primary-color: #00ffcc;
+    --secondary-color: #ff00ff;
+    --menu-background: #1a1a1a;
+    --square-background: #333;
+    --border-color: #555;
+    --text-font: 'Orbitron', sans-serif;
+}

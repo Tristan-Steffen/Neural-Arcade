@@ -1,4 +1,6 @@
 /* src/styles/TicTacToe.css */
+@import './Variables.css';
+
 .board-row {
     display: flex;
 }
@@ -6,41 +8,41 @@
 .square {
     width: 60px;
     height: 60px;
-    background: #333; /* Dunkler Hintergrund für die Quadrate */
-    border: 1px solid #555;
+    background: var(--square-background);
+    border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
-    color: #00ffcc; /* Neonfarbe für den Text */
-    text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc; /* Glüheffekt */
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .square:hover {
-    background-color: #555;
-    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; /* Neon-Glüheffekt bei Hover */
+    background-color: var(--border-color);
+    box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
 }
 
 .status {
     margin-bottom: 10px;
-    color: #ff00ff; /* Neonfarbe */
-    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff; /* Glüheffekt */
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
 }
 
 button {
     margin-top: 10px;
-    background-color: #1a1a1a; /* Dunkler Hintergrund für die Schaltfläche */
-    color: #00ffcc; /* Neonfarbe */
-    border: 1px solid #333;
+    background-color: var(--menu-background);
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
-    font-family: 'Orbitron', sans-serif; /* Futuristische Schriftart */
+    font-family: var(--text-font);
 }
 
 button:hover {
-    background-color: #333;
-    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; /* Neon-Glüheffekt bei Hover */
+    background-color: var(--border-color);
+    box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
 }

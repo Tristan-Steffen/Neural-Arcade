@@ -1,12 +1,13 @@
 /* src/styles/App.css */
-.App {
-  display: flex;
-  height: 100vh; /* Make the App container take full viewport height */
-  background-color: #0d0d0d; /* Dunkler Hintergrund */
-  color: #00ffcc; /* Neonfarbe für den Text */
-  font-family: 'Orbitron', sans-serif; /* Futuristische Schriftart */
-}
+@import './styles/Variables.css';
 
+.App {
+    display: flex;
+    background-color: var(--background-color);
+    height: 100vh;
+    color: var(--primary-color);
+    font-family: var(--text-font);
+}
 .content {
   padding: 20px;
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
