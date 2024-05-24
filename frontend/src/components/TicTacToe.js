@@ -66,7 +66,7 @@ const TicTacToe = () => {
                 {renderSquare(7)}
                 {renderSquare(8)}
             </div>
-            <button onClick={resetGame}>Reset</button>
+            <button className='square reset-button' onClick={resetGame}>Reset</button>
         </div>
     );
 };
