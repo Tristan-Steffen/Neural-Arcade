@@ -7,6 +7,7 @@ const TicTacToe = () => {
     const [board, setBoard] = useState(Array(9).fill(null));
     const [winner, setWinner] = useState(null);
     const [currentPlayer, setCurrentPlayer] = useState(1);
+    const [status, setStatus] = useState('Next player: X');
 
     useEffect(() => {
         resetGame();
@@ -17,19 +18,16 @@ const TicTacToe = () => {
             const response = await axios.post('http://localhost:5000/reset');
             setBoard(response.data);
             setWinner(null);
-            setCurrentPlayer(1);
+            setCurrentPlayer(response.data.currentPlayer);
         } catch (error) {
             console.error('Error resetting the game:', error);
         }
     };
 
     const handleClick = async (index) => {
-        console.log(winner);
         if (board[index] || winner !== null) return;
-        console.log("click");
         try {
             const response = await axios.post('http://localhost:5000/move', { position: index });
-            console.log(response)
             setBoard(response.data.board);
             setWinner(response.data.winner);
             setCurrentPlayer((prevPlayer) => (prevPlayer === 1 ? 2 : 1));
@@ -38,15 +36,31 @@ const TicTacToe = () => {
         }
     };
 
+    useEffect(() => {
+        changestatus();
+    }, [winner, currentPlayer]);
+
     const renderSquare = (index) => (
         <button className="square" onClick={() => handleClick(index)}>
             {board[index] === 1 ? 'X' : board[index] === 2 ? 'O' : ''}
         </button>
     );
 
-    const status = winner === -1 ? `Next player: ${currentPlayer === 1 ? 'X' : 'O'}` :
-        winner === 0 ? 'Draw!' :
-        `Winner: ${winner === 1 ? 'X' : 'O'}`;
+    function changestatus () {
+        if (winner === null) {
+            if (currentPlayer === 1) {
+                setStatus('Next player: O');
+            } else {
+                setStatus('Next player: X');
+            }
+        } else if (winner === 0) {
+            setStatus('Draw!');
+        } else if (winner === 1) {
+            setStatus('Winner: X');
+        } else if (winner === 2) {
+            setStatus('Winner: O');
+        }
+    }
 
     return (
         <div>
