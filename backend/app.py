@@ -48,7 +48,7 @@ def move():
     position = data.get('position')
     if game.move(position):
         winner = game.check_winner()
-        return jsonify({'board': game.board.tolist(), 'winner': winner})
+        return jsonify({'board': game.board.tolist(), 'winner': winner, 'current_player': game.current_player})
     return jsonify({'error': 'Invalid move'}), 400
 
 if __name__ == '__main__':
