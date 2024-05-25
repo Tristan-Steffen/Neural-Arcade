@@ -42,7 +42,7 @@ const ConnectFour = () => {
         return board.map((row, rowIndex) => (
             <div key={rowIndex} className="row">
                 {row.map((cell, colIndex) => (
-                    <div key={colIndex} className="cell" onClick={() => makeMove(colIndex)}>
+                    <div key={colIndex} className="square" onClick={() => makeMove(colIndex)}>
                         {cell === 1 ? 'X' : cell === 2 ? 'O' : ''}
                     </div>
                 ))}
@@ -54,7 +54,7 @@ const ConnectFour = () => {
         <div>
             <div className="board">{renderBoard()}</div>
             {winner !== null && <h2>Winner: Player {winner}</h2>}
-            <button onClick={resetGame}>Reset</button>
+            <button className='square reset-button' onClick={resetGame}>Reset</button>
         </div>
     );
 };
