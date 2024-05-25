@@ -15,7 +15,7 @@ const ConnectFour = () => {
 
     const resetGame = async () => {
         try {
-            const response = await axios.post(`${BASE_URL}/reset-connectfour`);
+            const response = await axios.post(`${BASE_URL}/connectfour-reset`);
             setBoard(response.data.board);
             setWinner(null);
             setCurrentPlayer(response.data.currentPlayer);
@@ -28,7 +28,7 @@ const ConnectFour = () => {
         if (winner !== null) return;
 
         try {
-            const response = await axios.post(`${BASE_URL}/move-connectfour`, { column: col });
+            const response = await axios.post(`${BASE_URL}/connectfour-move`, { column: col });
             setBoard(response.data.board);
             console.log(response.data)
             setWinner(response.data.winner);

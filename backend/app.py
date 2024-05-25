@@ -87,11 +87,11 @@ class TicTacToe:
 tic_tac_toe = TicTacToe()
 connect_four = ConnectFour()
 
-@app.route('/reset-tictactoe', methods=['POST'])
+@app.route('/tictactoe-reset', methods=['POST'])
 def reset_tictactoe():
     return jsonify(tic_tac_toe.reset())
 
-@app.route('/move-tictactoe', methods=['POST'])
+@app.route('/tictactoe-move', methods=['POST'])
 def move_tictactoe():
     data = request.get_json()
     position = data.get('position')
@@ -100,11 +100,11 @@ def move_tictactoe():
     winner = tic_tac_toe.check_winner()
     return jsonify({'board': tic_tac_toe.board.tolist(), 'winner': winner, 'currentPlayer': tic_tac_toe.current_player})
 
-@app.route('/reset-connectfour', methods=['POST'])
+@app.route('/connectfour-reset', methods=['POST'])
 def reset_connect_four():
     return jsonify(connect_four.reset())
 
-@app.route('/move-connectfour', methods=['POST'])
+@app.route('/connectfour-move', methods=['POST'])
 def move_connect_four():
     data = request.get_json()
     column = data.get('column')
