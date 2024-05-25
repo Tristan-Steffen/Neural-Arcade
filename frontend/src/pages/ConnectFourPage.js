@@ -1,11 +1,12 @@
 // src/pages/ConnectFourPage.js
 import React from 'react';
+import ConnectFour from '../components/ConnectFour';
 
 const ConnectFourPage = () => {
     return (
         <div>
             <h1>Vier Gewinnt</h1>
-            <p>Das Spiel wird bald verfügbar sein.</p>
+            <ConnectFour />
         </div>
     );
 };
