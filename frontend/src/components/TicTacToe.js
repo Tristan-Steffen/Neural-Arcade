@@ -13,9 +13,12 @@ const TicTacToe = () => {
         resetGame();
     }, []);
 
+    // Base URL for the backend
+    const BASE_URL = 'http://localhost:5000';
+
     const resetGame = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/reset');
+            const response = await axios.post(`${BASE_URL}/reset`);
             setBoard(response.data);
             setWinner(null);
             setCurrentPlayer(response.data.currentPlayer);
@@ -27,7 +30,7 @@ const TicTacToe = () => {
     const handleClick = async (index) => {
         if (board[index] || winner !== null) return;
         try {
-            const response = await axios.post('http://localhost:5000/move', { position: index });
+            const response = await axios.post(`${BASE_URL}/move`, { position: index });
             setBoard(response.data.board);
             setWinner(response.data.winner);
             setCurrentPlayer((prevPlayer) => (prevPlayer === 1 ? 2 : 1));
