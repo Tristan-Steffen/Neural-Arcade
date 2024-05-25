@@ -1,88 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import numpy as np
+from games.TicTacToe import TicTacToe
+from games.ConnectFour import ConnectFour
 
 app = Flask(__name__)
 CORS(app)
-
-class ConnectFour:
-    def __init__(self, rows=6, columns=7):
-        self.rows = rows
-        self.columns = columns
-        self.board = np.zeros((self.rows, self.columns))
-        self.current_player = 1
-
-    def reset(self):
-        self.board = np.zeros((self.rows, self.columns))
-        self.current_player = 1
-        return {'board': self.board.tolist(), 'currentPlayer': self.current_player}
-
-    def move(self, column):
-        if not 0 <= column < self.columns:
-            return False
-        row = next((r for r in range(self.rows - 1, -1, -1) if self.board[r, column] == 0), None)
-        if row is None:
-            return False
-        self.board[row, column] = self.current_player
-        self.current_player = 3 - self.current_player  # Switch player
-        return True
-
-    def check_winner(self):
-        # Check for a win in horizontal, vertical, and both diagonal directions
-        for r in range(self.rows):
-            for c in range(self.columns - 3):
-                if self.board[r, c] == self.board[r, c + 1] == self.board[r, c + 2] == self.board[r, c + 3] != 0:
-                    return int(self.board[r, c])
-
-        for r in range(self.rows - 3):
-            for c in range(self.columns):
-                if self.board[r, c] == self.board[r + 1, c] == self.board[r + 2, c] == self.board[r + 3, c] != 0:
-                    return int(self.board[r, c])
-
-        for r in range(self.rows - 3):
-            for c in range(self.columns - 3):
-                if self.board[r, c] == self.board[r + 1, c + 1] == self.board[r + 2, c + 2] == self.board[r + 3, c + 3] != 0:
-                    return int(self.board[r, c])
-
-        for r in range(3, self.rows):
-            for c in range(self.columns - 3):
-                if self.board[r, c] == self.board[r - 1, c + 1] == self.board[r - 2, c + 2] == self.board[r - 3, c + 3] != 0:
-                    return int(self.board[r, c])
-
-        if np.all(self.board != 0):
-            return 0  # Draw
-        return None  # No winner yet
-
-
-class TicTacToe:
-    def __init__(self):
-        self.board = np.zeros(9)
-        self.current_player = 1
-
-    def reset(self):
-        self.board = np.zeros(9)
-        self.current_player = 1
-        return self.board.tolist()
-
-    def move(self, position):
-        if self.board[position] != 0:
-            return False
-        self.board[position] = self.current_player
-        self.current_player = 3 - self.current_player  # switch player
-        return True
-
-    def check_winner(self):
-        winning_combinations = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8],
-            [0, 3, 6], [1, 4, 7], [2, 5, 8],
-            [0, 4, 8], [2, 4, 6]
-        ]
-        for combo in winning_combinations:
-            if self.board[combo[0]] == self.board[combo[1]] == self.board[combo[2]] != 0:
-                return int(self.board[combo[0]])
-        if 0 not in self.board:
-            return 0  # Draw
-        return None  # No winner yet
 
 tic_tac_toe = TicTacToe()
 connect_four = ConnectFour()
@@ -115,4 +37,3 @@ def move_connect_four():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
-
