@@ -1,0 +1,47 @@
+.board {
+    margin: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #587b64;
+    cursor: pointer;
+}
+
+.cell.alive {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 3px var(--primary-color), 0 0 5px var(--primary-color);
+    z-index: 1;
+}
+
+.cell.dead {
+    background-color: var(--border-color);
+}
+
+.reset-button {
+    width: 180px;
+    height: 40px;
+    background: var(--square-background);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-top: 10px;
+    margin-right: 10px;
+    text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.label {
+    margin: 0 10px;
+}

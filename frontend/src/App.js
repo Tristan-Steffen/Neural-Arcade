@@ -5,6 +5,7 @@ import Menu from './components/Menu';
 import HomePage from './pages/HomePage';
 import TicTacToePage from './pages/TicTacToePage';
 import ConnectFourPage from './pages/ConnectFourPage';
+import GameOfLifePage from './pages/GameOfLifePage';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/tic-tac-toe" element={<TicTacToePage />} />
                         <Route path="/connect-four" element={<ConnectFourPage />} />
+                        <Route path="/game-of-life" element={<GameOfLifePage />} />
                     </Routes>
                 </div>
             </div>
