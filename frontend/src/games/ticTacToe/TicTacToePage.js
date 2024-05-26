@@ -1,6 +1,6 @@
 // src/pages/TicTacToePage.js
 import React from 'react';
-import TicTacToe from '../components/TicTacToe.js';
+import TicTacToe from './TicTacToe.js';
 
 const TicTacToePage = () => {
     return (

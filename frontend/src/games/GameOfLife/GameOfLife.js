@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/GameOfLife.css';
+import './GameOfLife.css';
 
 const BASE_URL = 'http://localhost:5000';
 

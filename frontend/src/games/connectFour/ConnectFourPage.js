@@ -1,6 +1,6 @@
 // src/pages/ConnectFourPage.js
 import React from 'react';
-import ConnectFour from '../components/ConnectFour';
+import ConnectFour from './ConnectFour';
 
 const ConnectFourPage = () => {
     return (

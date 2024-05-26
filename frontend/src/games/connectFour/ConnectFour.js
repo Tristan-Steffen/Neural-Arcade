@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/ConnectFour.css';
+import './ConnectFour.css';
 
 const BASE_URL = 'http://localhost:5000';
 

@@ -1,5 +1,5 @@
 /* src/styles/TicTacToe.css */
-@import './Variables.css';
+@import '../../styles/Variables.css';
 
 .row {
     display: flex;

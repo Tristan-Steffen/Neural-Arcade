@@ -3,9 +3,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Menu from './components/Menu';
 import HomePage from './pages/HomePage';
-import TicTacToePage from './pages/TicTacToePage';
-import ConnectFourPage from './pages/ConnectFourPage';
-import GameOfLifePage from './pages/GameOfLifePage';
+import TicTacToePage from './games/ticTacToe/TicTacToePage';
+import ConnectFourPage from './games/connectFour/ConnectFourPage';
+import GameOfLifePage from './games/GameOfLife/GameOfLifePage';
 import './App.css';
 
 function App() {
