@@ -10,7 +10,7 @@ class DQNAgent:
         self.gamma = 0.95
         self.epsilon = 1.0
         self.epsilon_min = 0.01
-        self.epsilon_decay = 0.99
+        self.epsilon_decay = 0.995
         self.learning_rate = 0.001
         self.model = self.build_model()
         self.target_model = self.build_model()
@@ -20,8 +20,8 @@ class DQNAgent:
     def build_model(self):
         model = Sequential([
             Flatten(input_shape=(10,)),  # Flattening input shape (9,)
-            Dense(36, activation='relu'),
-            Dense(36, activation='relu'),
+            Dense(128, activation='relu'),
+            Dense(64, activation='relu'),
             Dense(9, activation='linear')
         ])
         model.compile(optimizer=keras.optimizers.Adam(self.learning_rate), 

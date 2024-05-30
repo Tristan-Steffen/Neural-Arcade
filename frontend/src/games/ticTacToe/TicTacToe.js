@@ -31,9 +31,10 @@ const TicTacToe = () => {
         if (board[index] || winner !== null) return;
         try {
             const response = await axios.post(`${BASE_URL}/tictactoe-move`, { position: index });
+            console.log(response.data);
             setBoard(response.data.board);
             setWinner(response.data.winner);
-            setCurrentPlayer((prevPlayer) => (prevPlayer === 1 ? 2 : 1));
+            setCurrentPlayer((prevPlayer) => (prevPlayer === 1 ? -1 : 1));
         } catch (error) {
             console.error('Invalid move:', error);
         }
@@ -45,7 +46,7 @@ const TicTacToe = () => {
 
     const renderSquare = (index) => (
         <button className="square" onClick={() => handleClick(index)}>
-            {board[index] === 1 ? 'X' : board[index] === 2 ? 'O' : ''}
+            {board[index] === 1 ? 'X' : board[index] === -1 ? 'O' : ''}
         </button>
     );
 
@@ -60,7 +61,7 @@ const TicTacToe = () => {
             setStatus('Draw!');
         } else if (winner === 1) {
             setStatus('Winner: X');
-        } else if (winner === 2) {
+        } else if (winner === -1) {
             setStatus('Winner: O');
         }
     }

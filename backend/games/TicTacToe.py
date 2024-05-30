@@ -8,12 +8,13 @@ class TicTacToe:
     def reset(self):
         self.board = np.zeros(9)
         self.current_player = 1
+        return self.board.tolist()
 
     def move(self, position):
         if self.board[position] != 0:
             return False
         self.board[position] = self.current_player
-        self.current_player = 3 - self.current_player  # switch player
+        self.current_player = self.current_player * -1  # switch player
         return True
 
     def check_winner(self):
