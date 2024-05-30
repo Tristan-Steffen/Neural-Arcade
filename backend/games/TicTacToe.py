@@ -1,4 +1,5 @@
 import numpy as np
+from models.ticTacToe.DQNModell import DQNAgent
 
 class TicTacToe:
     def __init__(self):
@@ -29,3 +30,33 @@ class TicTacToe:
         if 0 not in self.board:
             return 0  # Draw
         return None  # No winner yet
+    
+EPISODES = 1000
+game = TicTacToe()
+agent = DQNAgent()
+
+for e in range(EPISODES):
+    state = game.reset()
+    done = False
+    while not done:
+        action = agent.act(state)
+        if game.move(action):
+            next_state = game.board.reshape((3, 3))
+            winner = game.check_winner()
+            reward = 0
+            if winner is not None:
+                if winner == 0:
+                    reward = 0.5  # Draw
+                else:
+                    reward = 1 if winner == 1 else -1
+                done = True
+            agent.remember(state, action, reward, next_state, done)
+            state = next_state
+    agent.replay(32)
+    agent.update_target_model()
+
+    if e % 100 == 0:
+        print(f"Episode {e}/{EPISODES}, Epsilon: {agent.epsilon}")
+
+# Modell speichern
+agent.model.save('tictactoe_dqn_model.h5')
