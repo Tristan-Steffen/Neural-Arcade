@@ -20,8 +20,7 @@ class DQNAgent:
     def build_model(self):
         model = Sequential([
             Flatten(input_shape=(10,)),  # Flattening input shape (9,)
-            Dense(128, activation='relu'),
-            Dense(64, activation='relu'),
+            Dense(512, activation='relu'),
             Dense(9, activation='linear')
         ])
         model.compile(optimizer=keras.optimizers.Adam(self.learning_rate), 
@@ -34,6 +33,10 @@ class DQNAgent:
         act_values = self.model.predict(np.array(state).reshape(1, 10), verbose=0)
         return np.argmax(act_values[0])
 
+    def interact(self, state):
+        act_values = self.model.predict(np.array(state).reshape(1, 10), verbose=0)
+        return np.argmax(act_values[0])
+    
     def remember(self, state, action, reward, next_state, done):
         self.memory.append((state, action, reward, next_state, done))
 
@@ -47,7 +50,6 @@ class DQNAgent:
         rewards = np.array([transition[2] for transition in minibatch])
         next_states = np.array([transition[3] for transition in minibatch])
         dones = np.array([transition[4] for transition in minibatch])
-
         next_q_values = self.target_model.predict(next_states, verbose=0)
         targets = rewards + self.gamma * np.amax(next_q_values, axis=1) * (1 - dones)
         target_f = self.model.predict(states, verbose=0)
