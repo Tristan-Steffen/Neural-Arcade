@@ -1,5 +1,5 @@
 from games import TicTacToe
-from models.ticTacToe.DQNModell import DQNAgent
+from backend.models.ticTacToe.DQNAgent import DQNAgent
 import keras
 import os
 
