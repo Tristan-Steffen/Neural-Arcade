@@ -4,7 +4,7 @@ import axios from 'axios';
 import './TicTacToe.css';
 
 const TicTacToe = () => {
-    const [board, setBoard] = useState(Array(9).fill(null));
+    const [board, setBoard] = useState(Array(3).fill(Array(3).fill(null)));
     const [winner, setWinner] = useState(null);
     const [currentPlayer, setCurrentPlayer] = useState(1);
     const [status, setStatus] = useState('Next player: X');
@@ -27,10 +27,10 @@ const TicTacToe = () => {
         }
     };
 
-    const handleClick = async (index) => {
-        if (board[index] || winner !== null) return;
+    const handleClick = async (i,j) => {
+        if (board[i][j] || winner !== null) return;
         try {
-            const response = await axios.post(`${BASE_URL}/tictactoe-move`, { position: index });
+            const response = await axios.post(`${BASE_URL}/tictactoe-move`, { position: [i,j] });
             console.log(response.data);
             setBoard(response.data.board);
             setWinner(response.data.winner);
@@ -44,9 +44,9 @@ const TicTacToe = () => {
         changestatus();
     }, [winner, currentPlayer]);
 
-    const renderSquare = (index) => (
-        <button className="square" onClick={() => handleClick(index)}>
-            {board[index] === 1 ? 'X' : board[index] === -1 ? 'O' : ''}
+    const renderSquare = (i,j) => (
+        <button className="square" onClick={() => handleClick(i,j)}>
+            {board[i][j] === 1 ? 'X' : board[i][j] === -1 ? 'O' : ''}
         </button>
     );
 
@@ -70,19 +70,19 @@ const TicTacToe = () => {
         <div>
             <div className="status">{status}</div>
             <div className="row">
-                {renderSquare(0)}
-                {renderSquare(1)}
-                {renderSquare(2)}
+                {renderSquare(0,0)}
+                {renderSquare(0,1)}
+                {renderSquare(0,2)}
             </div>
             <div className="row">
-                {renderSquare(3)}
-                {renderSquare(4)}
-                {renderSquare(5)}
+                {renderSquare(1,0)}
+                {renderSquare(1,1)}
+                {renderSquare(1,2)}
             </div>
             <div className="row">
-                {renderSquare(6)}
-                {renderSquare(7)}
-                {renderSquare(8)}
+                {renderSquare(2,0)}
+                {renderSquare(2,1)}
+                {renderSquare(2,2)}
             </div>
             <button className='square reset-button' onClick={resetGame}>Reset</button>
         </div>

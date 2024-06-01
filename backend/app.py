@@ -23,16 +23,16 @@ def reset_tictactoe():
     print(tic_tac_toe.reset())
     return jsonify(tic_tac_toe.reset())
 
-@app.route('/tictactoe-movee', methods=['POST'])
+@app.route('/tictactoe-move', methods=['POST'])
 def move_tictactoe():
     data = request.get_json()
-    position = data.get('position')
+    position = data.get("position")
     if position is None or not tic_tac_toe.move(position):
         return jsonify({'error': 'Invalid move'}), 400
     winner = tic_tac_toe.check_winner()
     return jsonify({'board': tic_tac_toe.board.tolist(), 'winner': winner, 'currentPlayer': tic_tac_toe.current_player})
 
-@app.route('/tictactoe-move', methods=['POST'])
+@app.route('/tictactoe-movee', methods=['POST'])
 def agent_move_tictactoe():
     print("start")
     data = request.get_json()

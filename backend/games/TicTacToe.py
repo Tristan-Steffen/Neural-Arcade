@@ -2,31 +2,33 @@ import numpy as np
 
 class TicTacToe:
     def __init__(self):
-        self.board = np.zeros(9)
+        self.board = np.zeros((3, 3))
         self.current_player = 1
 
     def reset(self):
-        self.board = np.zeros(9)
+        self.board = np.zeros((3, 3))
         self.current_player = 1
         return self.board.tolist()
 
     def move(self, position):
-        if self.board[position] != 0:
+        if self.board[position[0]][position[1]] != 0:
             return False
-        self.board[position] = self.current_player
+        self.board[position[0]][position[1]] = self.current_player
         self.current_player = self.current_player * -1  # switch player
         return True
 
     def check_winner(self):
-        winning_combinations = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8],
-            [0, 3, 6], [1, 4, 7], [2, 5, 8],
-            [0, 4, 8], [2, 4, 6]
-        ]
-        for combo in winning_combinations:
-            if self.board[combo[0]] == self.board[combo[1]] == self.board[combo[2]] != 0:
-                return int(self.board[combo[0]])
+        print(self.board)
+        for i in range(len(self.board)):
+            if self.board[i][0] == self.board[i][1] == self.board[i][2] != 0:
+                return self.board[i][0]
+        for i in range(len(self.board[0])):
+            if self.board[0][i] == self.board[1][i] == self.board[2][i] != 0:
+                return self.board[0][i]
+        if self.board[0][0] == self.board[1][1] == self.board[2][2] != 0:
+            return self.board[0][0]
+        if self.board[0][2] == self.board[1][1] == self.board[2][0] != 0:
+            return self.board[0][2]
         if 0 not in self.board:
             return 0  # Draw
         return None  # No winner yet
-    
